@@ -7,5 +7,5 @@
 ![GitHub Release](https://img.shields.io/github/v/release/potistudio/Lissajous-Vector-Scope-for-AviUtl?display_name=release)
 
 <div align="center">
-	<img src="Preview.png" alt="Preview Image">
+	<img src="Preview.gif" alt="Preview Image">
 </div>
