@@ -9,3 +9,6 @@
 <div align="center">
 	<img src="Preview.gif" alt="Preview Image">
 </div>
+
+## Wikipedia Source
+[Lissajous curve](https://en.wikipedia.org/wiki/Lissajous_curve)
