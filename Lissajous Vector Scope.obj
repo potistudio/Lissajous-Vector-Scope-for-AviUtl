@@ -1,6 +1,6 @@
 
 --track0: 点サイズ, 0, 1000, 8
---track1: サイズ, 0, 1000, 10
+--track1: スコープサイズ, 0, 1000, 500
 
 --dialog: 点図形/fig, local particleFigure="円"; 点色/col, local particleColor=0xffffff; グリッド描画/chk, local isDrawGrid=1; グリッド色/col, local gridColor=0xffffff; グリッド線幅, local gridLineThickness=2;
 
