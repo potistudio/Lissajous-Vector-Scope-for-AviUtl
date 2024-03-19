@@ -1,0 +1,48 @@
+
+--track0: 点サイズ, 0, 1000, 8
+--track1: サイズ, 0, 1000, 10
+
+--dialog: 点図形/fig, local particleFigure="円"; 点色/col, local particleColor=0xffffff; グリッド描画/chk, local isDrawGrid=1; グリッド色/col, local gridColor=0xffffff; グリッド線幅, local gridLineThickness=2;
+
+-------- Import rikky_module --------
+package.cpath = package.cpath .. ";" .. obj.getinfo ("script_path"):match ("(.*\\).*\\") .. "?.dll"
+local bool, rikky_module = pcall (require, "rikky_module")
+if not bool then
+	obj.load ("<s100>require rikky_module!")
+	obj.draw()
+	return
+end
+
+-------- Pre --------
+obj.setfont ("MS UI Gothic", 50, 0, 0xffffff)
+obj.setoption ("drawtarget", "tempbuffer", obj.screen_w, obj.screen_h)
+
+local particleSize = obj.track0
+local scopeSize = obj.track1
+local scopeMultiplier = scopeSize * 0.000015
+
+local currentFrame, totalFrame = rikky_module.getinfo ("frame")
+
+local leftWaveformBuffer = {}
+local rightWaveformBuffer = {}
+
+-------- Get Waveform --------
+leftWaveformBuffer, rightWaveformBuffer = rikky_module.audiobuffer (currentFrame, "PCM", "absolute", "stereo", 4096, 0)
+
+-------- Draw --------
+if isDrawGrid == 1 then
+	obj.load ("figure", "四角形", 0xffffff, scopeSize, gridLineThickness)
+	obj.draw()
+end
+
+obj.load ("figure", particleFigure, particleColor, particleSize)
+
+for i = 1, #leftWaveformBuffer do
+	obj.draw (leftWaveformBuffer[i] * scopeMultiplier, rightWaveformBuffer[i] * scopeMultiplier)
+end
+
+-------- Post --------
+obj.load ("tempbuffer")
+obj.rz = 45
+
+obj.effect()
