@@ -43,6 +43,6 @@ end
 
 -------- Post --------
 obj.load ("tempbuffer")
-obj.rz = 45
+obj.rz = obj.rz + 45
 
 obj.effect()
